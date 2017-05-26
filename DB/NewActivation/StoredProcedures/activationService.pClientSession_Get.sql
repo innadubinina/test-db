@@ -10,7 +10,6 @@ CREATE TABLE [log].[error](
 	[number] [int] NULL,
 	[message] [nvarchar](max) COLLATE Cyrillic_General_CI_AS NULL,
 	[createDate] [datetime] NULL CONSTRAINT [DF_logError_createDate]  DEFAULT (getdate()),
-	[test] [nvarchar](max) COLLATE Cyrillic_General_CI_AS NULL,
  CONSTRAINT [PK_logError] PRIMARY KEY CLUSTERED 
 (
 	[id] DESC
@@ -609,6 +608,8 @@ begin try
                 +  char(0x0d) + char(0x0a) + char(0x09) + '@UID=' + isnull(ltrim(rtrim(cast(@UID as varchar(48)))), 'null')
             raiserror (@errMsg , 16, 1)
         end
+
+		print 'test'
 
 
         set @messageActivLog = (select 'For UID was found the privateKey' as [Message], isnull(cast(@UID as nvarchar(48)), 'null') as [UID], isnull(convert(varchar(1282),@privateKey, 1), 'null') as [privateKey]
