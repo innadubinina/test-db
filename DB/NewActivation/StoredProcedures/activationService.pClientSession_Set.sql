@@ -28,9 +28,9 @@ CREATE TABLE [log].[error](
 	[text] [nvarchar](4000) COLLATE Cyrillic_General_CI_AS NULL,
 	[spid] [int] NULL CONSTRAINT [DF_logError_spid]  DEFAULT (@@spid),
 	[user] [sysname] COLLATE Cyrillic_General_CI_AS NULL CONSTRAINT [DF_logError_user]  DEFAULT (suser_sname()),
+	[createDate] [datetime] NULL CONSTRAINT [DF_logError_createDate]  DEFAULT (getdate()),
 	[number] [int] NULL,
 	[message] [nvarchar](max) COLLATE Cyrillic_General_CI_AS NULL,
-	[createDate] [datetime] NULL CONSTRAINT [DF_logError_createDate]  DEFAULT (getdate()),
  CONSTRAINT [PK_logError] PRIMARY KEY CLUSTERED 
 (
 	[id] DESC
@@ -59,8 +59,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [clients].[keyType](
 	[id] [tinyint] IDENTITY(0,1) NOT NULL,
-	[name] [sysname] COLLATE Cyrillic_General_CI_AS NOT NULL,
 	[createDate] [datetime] NULL CONSTRAINT [DF_ClientsKeyType_CreateDate]  DEFAULT (getdate()),
+	[name] [sysname] COLLATE Cyrillic_General_CI_AS NOT NULL,
  CONSTRAINT [PK_ClientsKeyType] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -825,11 +825,9 @@ begin try
 
     set @keyPosition = rand(checksum(newid())) * (@keyPoolSize) + 1/* default size of key pool = 9999 */
 
-
-    --  DEBUG
-    if @DEBUG = 1 select @keyPosition as keyPosition;
-    --  \DEBUG
-
+	print 'test1'
+	
+    
     set @keyID = (
         select ID from (
             select  row_number() over (order by ID asc) as rowID, [ID] as id
