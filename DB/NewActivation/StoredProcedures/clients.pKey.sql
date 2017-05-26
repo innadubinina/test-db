@@ -4,8 +4,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [clients].[keyType](
 	[id] [tinyint] IDENTITY(0,1) NOT NULL,
-	[name] [sysname] COLLATE Cyrillic_General_CI_AS NOT NULL,
 	[createDate] [datetime] NULL CONSTRAINT [DF_ClientsKeyType_CreateDate]  DEFAULT (getdate()),
+	[name] [sysname] COLLATE Cyrillic_General_CI_AS NOT NULL,
  CONSTRAINT [PK_ClientsKeyType] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -29,6 +29,7 @@ CREATE TABLE [log].[error](
 	[number] [int] NULL,
 	[message] [nvarchar](max) COLLATE Cyrillic_General_CI_AS NULL,
 	[createDate] [datetime] NULL CONSTRAINT [DF_logError_createDate]  DEFAULT (getdate()),
+	[test] [nvarchar](max) COLLATE Cyrillic_General_CI_AS NULL,
  CONSTRAINT [PK_logError] PRIMARY KEY CLUSTERED 
 (
 	[id] DESC

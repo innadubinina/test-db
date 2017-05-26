@@ -25,8 +25,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [clients].[keyType](
 	[id] [tinyint] IDENTITY(0,1) NOT NULL,
-	[name] [sysname] COLLATE Cyrillic_General_CI_AS NOT NULL,
 	[createDate] [datetime] NULL CONSTRAINT [DF_ClientsKeyType_CreateDate]  DEFAULT (getdate()),
+	[name] [sysname] COLLATE Cyrillic_General_CI_AS NOT NULL,
  CONSTRAINT [PK_ClientsKeyType] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC

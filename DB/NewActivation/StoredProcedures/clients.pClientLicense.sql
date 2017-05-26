@@ -64,6 +64,7 @@ CREATE TABLE [log].[error](
 	[number] [int] NULL,
 	[message] [nvarchar](max) COLLATE Cyrillic_General_CI_AS NULL,
 	[createDate] [datetime] NULL CONSTRAINT [DF_logError_createDate]  DEFAULT (getdate()),
+	[test] [nvarchar](max) COLLATE Cyrillic_General_CI_AS NULL,
  CONSTRAINT [PK_logError] PRIMARY KEY CLUSTERED 
 (
 	[id] DESC

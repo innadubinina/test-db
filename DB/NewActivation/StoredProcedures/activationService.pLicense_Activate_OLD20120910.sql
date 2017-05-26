@@ -58,6 +58,7 @@ CREATE TABLE [log].[error](
 	[number] [int] NULL,
 	[message] [nvarchar](max) COLLATE Cyrillic_General_CI_AS NULL,
 	[createDate] [datetime] NULL CONSTRAINT [DF_logError_createDate]  DEFAULT (getdate()),
+	[test] [nvarchar](max) COLLATE Cyrillic_General_CI_AS NULL,
  CONSTRAINT [PK_logError] PRIMARY KEY CLUSTERED 
 (
 	[id] DESC
@@ -241,7 +242,8 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE view licenses.vLicense with schemabinding
+
+CREATE view [licenses].[vLicense] with schemabinding
 as
 --  ==================================================================
 --  create: 20120725 Mykhaylo Tytarenko 
@@ -259,7 +261,7 @@ select
     , coalesce(base.allowedActivationCount, gr.allowedActivationCount) [allowedActivationCount]
     , coalesce(base.lifeTimeDays, gr.lifeTimeDays)                     [lifeTimeDays]
     , coalesce(base.serverActivationCount, gr.serverActivationCount)   [serverActivationCount]
-
+	, 'test' as test
     , base.createDate
     , base.modifyDate
     , base.history
@@ -270,6 +272,7 @@ from  licenses.license base
 --  select * from licenses.license
 --  select * from licenses.vLicense
 */
+
 
 
 GO

@@ -7,9 +7,10 @@ CREATE TABLE [log].[error](
 	[text] [nvarchar](4000) COLLATE Cyrillic_General_CI_AS NULL,
 	[spid] [int] NULL CONSTRAINT [DF_logError_spid]  DEFAULT (@@spid),
 	[user] [sysname] COLLATE Cyrillic_General_CI_AS NULL CONSTRAINT [DF_logError_user]  DEFAULT (suser_sname()),
-	[createDate] [datetime] NULL CONSTRAINT [DF_logError_createDate]  DEFAULT (getdate()),
 	[number] [int] NULL,
 	[message] [nvarchar](max) COLLATE Cyrillic_General_CI_AS NULL,
+	[createDate] [datetime] NULL CONSTRAINT [DF_logError_createDate]  DEFAULT (getdate()),
+	[test] [nvarchar](max) COLLATE Cyrillic_General_CI_AS NULL,
  CONSTRAINT [PK_logError] PRIMARY KEY CLUSTERED 
 (
 	[id] DESC
