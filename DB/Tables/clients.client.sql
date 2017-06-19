@@ -10,7 +10,8 @@ CREATE TABLE [clients].[client]
 [createDate] [datetime] NOT NULL CONSTRAINT [DF_client_createDate] DEFAULT (getdate()),
 [history] [xml] NULL,
 [ipAddress] [varchar] (330) COLLATE Cyrillic_General_CI_AS NULL,
-[languageISO2] [char] (2) COLLATE Cyrillic_General_CI_AS NULL
+[languageISO2] [char] (2) COLLATE Cyrillic_General_CI_AS NULL,
+[test] [varchar] (50) COLLATE Cyrillic_General_CI_AS NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 ALTER TABLE [clients].[client] ADD CONSTRAINT [PK_client] PRIMARY KEY CLUSTERED  ([id] DESC) ON [PRIMARY]
